@@ -13,10 +13,15 @@ const forecast = ({ latitude, longitude }, callBack) => {
       } else if (body.error) {
         callBack(body.error.info);
       } else {
-        const { weather_descriptions, temperature, feelslike } = body.current;
+        const {
+          weather_descriptions,
+          temperature,
+          feelslike,
+          observation_time,
+        } = body.current;
         callBack(
           undefined,
-          `${weather_descriptions[0]}. It is currently ${temperature} degrees out. It feels like ${feelslike} degrees out`
+          `${weather_descriptions[0]}. It is currently ${temperature} degrees out. It feels like ${feelslike} degrees out. Data observed at ${observation_time}`
         );
       }
     }
